@@ -1,35 +1,35 @@
-letters = ["a", "b", "c", "d"]
+letters = ["a", "b", "c", "d"] # list
 
-def user_choice(prompt, valid_choices):
-    while True:
-        choice = input(prompt)
+def user_choice(prompt, valid_choices): # repeatable function which will make that so user can choose only available answers
+    while True: # loops the function
+        choice = input(prompt).strip().lower() # assigns input to a variable (choice), prompt refers to the data between (), removes whitespaces, converts answer to small letters so they always match the value 
 
-        if choice in valid_choices:
-            return choice
-        else:
-            print(f"Invalid choice, please choose one of the following {', '.join(valid_choices)}")
+        if choice in valid_choices: # check if choice is in the variable known as "valid choices"
+            return choice # ends the function and saves answer to the program
+        else: # if the answer wasn't in valid_choices
+            print(f"Invalid choice, please choose one of the following {', '.join(valid_choices)}") # joins the list of available choices and continues the loop
 
 
-def letter_show():
-    prompt_lines = ["Which letter would you like to devour?"]
+def letter_show(): # reusable function that adds items to the list
+    prompt_lines = ["Which letter would you like to devour?"] # prepares the list of items
 
-    for idx, key in enumerate(letters, start=1):
-        prompt_lines.append(f"{idx}. {key}")
+    for idx, key in enumerate(letters, start=1): # for loop which will add every letter from the list to the prompt_lines list, number each of them by idx, starts displaying at 1 instead of 0
+        prompt_lines.append(f"{idx}. {key}") # adds items to the invisible list 
 
-    prompt_lines.append("> ")
+    prompt_lines.append("> ") # adds > at the end of the list for cleaner interface
 
-    return "\n".join(prompt_lines)
+    return "\n".join(prompt_lines) # returns the list to the rest of the function
 
-def letter_add():
+def letter_add(): # function that will add letters 
 
-    prompt = letter_show()
+    prompt = letter_show() # assigns data from the letter_show function to a variable called prompt
 
-    valid_choices = [str(i) for i in range(1, len(letters) + 1)]
+    valid_choices = [str(i) for i in range(1, len(letters) + 1)] """defines valid choices, assigns them to the variable, takes string items for each item in the range of available letters, """ 
+                                                                 """starting from the beginning, then adds + 1 at then so that it reflects user's choice accurately instead of 0 = a, 1 = b, etc."""
+    choice_num = user_choice(prompt, valid_choices) # assigns user's choice to a variable, prints out the list from letter_show and let's him choose only the available choices using user_choice function
 
-    choice_num = user_choice(prompt, valid_choices)
-
-    letter = letters[int(choice_num) - 1]
+    letter = letters[int(choice_num) - 1] # assigns the answer 
 
     print(letter)
 
-letter_add()
+letter_add() # starts the function
