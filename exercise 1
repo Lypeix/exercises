@@ -28,8 +28,8 @@ def letter_add(): # function that will add letters
                                                                  """starting from the beginning, then adds + 1 at then so that it reflects user's choice accurately instead of 0 = a, 1 = b, etc."""
     choice_num = user_choice(prompt, valid_choices) # assigns user's choice to a variable, prints out the list from letter_show and let's him choose only the available choices using user_choice function
 
-    letter = letters[int(choice_num) - 1] # assigns the answer 
+    letter = letters[int(choice_num) - 1] # assigns the right data to the variable and converts user's choice to a integer, then subtracts 1 so that it matches the index
 
-    print(letter)
+    print(letter) # prints user's answer (test)
 
 letter_add() # starts the function
