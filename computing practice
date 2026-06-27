@@ -11,39 +11,38 @@ rates = {
 }
 
 TAX_RATE = 0.20
-tax_rate = TAX_RATE
 
 def compute_subtotals(usage, rates):
-    result = {} # creates dictionary to store the data in
+    result = {} 
 
-    for key, qty in usage.items():  # iterates over each key and its value in the usage dict
-        result[key] = qty * rates[key] # result for each key = it's quantity multiplied by the quantity of the same keys in rates
+    for key, qty in usage.items(): 
+        result[key] = qty * rates[key] 
 
-    return result # saves the result to be passed down to other function
+    return result 
 
-def compute_final_bill(usage, rates, tax_rate):
+def compute_final_bill(usage, rates):
 
-    subtotals = compute_subtotals(usage, rates) # uses the data passed down from previous function to define the subtotal variable
-    tax_rate = TAX_RATE # assigns parameter to the constant
+    subtotals = compute_subtotals(usage, rates)
+    
 
-    for key, qty in usage.items(): # iterates over key and its value in the subtotal variable (which acts as result dict from the function it calls)
-        subtotals[key] = qty 
+    for key, qty in usage.items():
+        subtotals[key] = qty * rates[key] 
 
     return subtotals
 
-def print_subtotals(usage, rates, tax_rate): 
+def print_subtotals(usage, rates):
 
-    subtotals = compute_final_bill(usage, rates, tax_rate)  
+    subtotals = compute_final_bill(usage, rates)  
 
-    subtotal_sum = 0 # accumulates value
+    subtotal_sum = 0 
 
 
     for key, value in subtotals.items(): 
-        subtotal_sum += subtotals[key] # adds value to the accumulator
+        subtotal_sum += subtotals[key] 
         print(f"subtotals: {key}: {value}")
         
-    tax_amount = subtotal_sum * TAX_RATE # calculates the tax
-    total = subtotal_sum + tax_amount # adds the tax amount to the subtotal_sum and assigns it to a variable
+    tax_amount = subtotal_sum * TAX_RATE
+    total = subtotal_sum + tax_amount    
 
 
     print(f"subtotal_sum: {subtotal_sum}")
@@ -51,6 +50,4 @@ def print_subtotals(usage, rates, tax_rate):
     print(f"total: {round(total, 2)}")
 
 
-
-
-print_subtotals(usage, rates, tax_rate)
+print_subtotals(usage, rates)
