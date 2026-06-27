@@ -10,25 +10,47 @@ rates = {
     "gas": 1.40           # per unit
 }
 
+TAX_RATE = 0.20
+tax_rate = TAX_RATE
+
 def compute_subtotals(usage, rates):
-    result = {} # creates dictionary to store the data in
+    result = {} 
 
-    for key, qty in usage.items():  # iterates over each key and its value in the usage dict
-        result[key] = qty * rates[key] # result for each key = it's quantity multiplied by the quantity of the same keys in rates
+    for key, qty in usage.items(): 
+        result[key] = qty * rates[key] 
 
-    return result # saves the result to be passed down to other function
+    return result 
 
-def print_subtotals(usage, rates):
+def compute_final_bill(usage, rates, tax_rate):
 
-    subtotals = compute_subtotals(usage, rates)  # uses the data passed down from previous function to define the subtotal variable
+    subtotals = compute_subtotals(usage, rates)
+    tax_rate = TAX_RATE
 
-    total = 0 # accumulates value
-    
-    for key, value in subtotals.items(): # iterates over key and its value in the subtotal variable (which acts as result dict from the function it calls)
-        total += subtotals[key] # adds total price of each item to the accumulator
-        print(f"{key}: {value}")
-    
-    print(f"total: {total}")
+    for key, qty in usage.items():
+        subtotals[key] = qty * tax_rate
+
+    return subtotals
+
+def print_subtotals(usage, rates, tax_rate):
+
+    subtotals = compute_final_bill(usage, rates, tax_rate)  
+
+    subtotal_sum = 0 
 
 
-print_subtotals(usage, rates)
+    for key, value in subtotals.items(): 
+        subtotal_sum += subtotals[key] 
+        print(f"subtotals: {key}: {value}")
+        
+    tax_amount = subtotal_sum * TAX_RATE
+    total = subtotal_sum + tax_amount    
+
+
+    print(f"subtotal_sum: {subtotal_sum}")
+    print(f"tax: {TAX_RATE}")
+    print(f"total: {round(total, 2)}")
+
+
+
+
+print_subtotals(usage, rates, tax_rate)
