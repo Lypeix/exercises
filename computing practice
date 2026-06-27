@@ -1,0 +1,34 @@
+usage = {
+    "electricity": 120,   # kWh
+    "water": 30,          # cubic meters
+    "gas": 50             # units
+}
+
+rates = {
+    "electricity": 0.75,  # per kWh
+    "water": 2.10,        # per unit
+    "gas": 1.40           # per unit
+}
+
+def compute_subtotals(usage, rates):
+    result = {}
+
+    for key, qty in usage.items():
+        result[key] = qty * rates[key]
+
+    return result
+
+def print_subtotals(usage, rates):
+
+    subtotal = compute_subtotals(usage, rates)
+
+    total = 0 
+    
+    for key, qty in subtotal.items():
+        total += subtotal[key]
+        print(f"{key}: {qty}")
+    
+    print(f"total: {total}")
+
+
+print_subtotals(usage, rates)
