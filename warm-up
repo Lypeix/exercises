@@ -1,15 +1,15 @@
 # Everything went smooth and fast until the computing... time to spend a good little while on mastering that
 
-items = ['cola', 'manga', 'suit']
+items = ['cola', 'manga', 'suit'] # list to work on
 
 def build_menu(items):
-    lines = []
+    lines = [] # list that will store objects inside the function
     
-    for i in range(0, len(items)):
-        lines.append(f"{i + 1}. {items[i]}")
-    lines.append("> ")
+    for i in range(0, len(items)): # for each item in the range 0-2 (all 3 list objects)
+        lines.append(f"{i + 1}. {items[i]}") # adds key index number and name to the list
+    lines.append("> ") # adds > at the end of the list for UI
     
-    return "\n"
+    return # returns the function
 
 build_menu(items)
 
