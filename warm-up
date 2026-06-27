@@ -1,3 +1,5 @@
+# Everything went smooth and fast until the computing....
+
 items = ['cola', 'manga', 'suit']
 
 def build_menu(items):
@@ -67,5 +69,26 @@ def add_to_cart(keys):
 
     return
 
+cart = {"cola": 2, "mango": 1}
+prices = {"cola": 4, "mango": 8}
 
-add_to_cart(keys)
+def compute_subtotal(cart, prices):
+    result = {}
+
+    for key, qty in cart.items():
+        result[key] = qty * prices[key]
+
+    return result
+
+def print_prices(cart, prices):
+    subtotals = compute_subtotal(cart, prices)
+
+    total = 0
+
+    for key, value in subtotals.items():
+        print(f"{key}: {value}")
+        total += value
+
+    print(f"total: {total}")
+
+print_prices(cart, prices)
