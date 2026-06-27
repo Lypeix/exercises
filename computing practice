@@ -11,21 +11,21 @@ rates = {
 }
 
 def compute_subtotals(usage, rates):
-    result = {}
+    result = {} # creates dictionary to store the data in
 
-    for key, qty in usage.items():
-        result[key] = qty * rates[key]
+    for key, qty in usage.items():  # iterates over each key and its value in the usage dict
+        result[key] = qty * rates[key] # result for each key = it's quantity multiplied by the quantity of the same keys in rates
 
-    return result
+    return result # saves the result to be passed down to other function
 
 def print_subtotals(usage, rates):
 
-    subtotal = compute_subtotals(usage, rates)
+    subtotal = compute_subtotals(usage, rates)  # uses the data passed down from previous function to define the subtotal variable
 
-    total = 0 
+    total = 0 # accumulates value
     
-    for key, qty in subtotal.items():
-        total += subtotal[key]
+    for key, qty in subtotal.items(): # iterates over key and its value in the subtotal variable (which acts as result dict from the function it calls)
+        total += subtotal[key] # adds total price of each item to the accumulator
         print(f"{key}: {qty}")
     
     print(f"total: {total}")
