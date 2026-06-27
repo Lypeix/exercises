@@ -9,7 +9,7 @@ def build_menu(items):
         lines.append(f"{i + 1}. {items[i]}") # adds key index number and name to the list
     lines.append("> ") # adds > at the end of the list for UI
     
-    return # returns the function
+    return # saves the function data to be passed down somewhere else later on
 
 build_menu(items)
 
