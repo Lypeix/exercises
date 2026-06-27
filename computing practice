@@ -27,7 +27,7 @@ def compute_final_bill(usage, rates, tax_rate):
     tax_rate = TAX_RATE # assigns parameter to the constant
 
     for key, qty in usage.items(): # iterates over key and its value in the subtotal variable (which acts as result dict from the function it calls)
-        subtotals[key] = qty * tax_rate # assigns tax rate to each subtotal
+        subtotals[key] = qty 
 
     return subtotals
 
