@@ -24,20 +24,20 @@ def print_subtotals(usage, rates):
 
     subtotals = compute_final_bill(usage, rates)  
 
-    subtotal_sum = 0 
+    subtotal_sum = 0 # accumulator (stores value)
+    total_sum = 0 # stores the value after tax
 
-
-    for key, value in subtotals.items(): 
-        subtotal_sum += subtotals[key] 
-        print(f"subtotals: {key}: {value}")
+    for key, value in subtotals.items(): # iterates over each key and its assigned value in the subtotals
+        subtotal_sum += subtotals[key] # adds value of each key in the subtotals to the accumulator
+        print(f"subtotal: {key}: {value}") # prints out the value for each key individually
         
-    tax_amount = subtotal_sum * TAX_RATE
-    total = subtotal_sum + tax_amount    
+    tax_amount = subtotal_sum * TAX_RATE # calculates tax amount
+    
+    total_sum = subtotal_sum + tax_amount # adds subtotal_sum after including tax to the total_sum
+
+    print(f"subtotal_sum: {subtotal_sum}") # prints out sum before tax
+    print(f"tax: {tax_amount}") # prints out tax amount
+    print(f"total: {round(total_sum, 2)}") # prints out sum after tax
 
 
-    print(f"subtotal_sum: {subtotal_sum}")
-    print(f"tax: {tax_amount}")
-    print(f"total: {round(total, 2)}")
-
-
-print_subtotals(usage, rates)
+print_subtotals(usage, rates) # calls the function
