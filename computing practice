@@ -10,25 +10,15 @@ rates = {
     "gas": 1.40           # per unit
 }
 
-TAX_RATE = 0.20
+TAX_RATE = 0.20 # constant cause tax will never change
 
 def compute_subtotals(usage, rates):
-    result = {} 
+    result = {} # prepares a dict to store the usage and rates dicts 
 
-    for key, qty in usage.items(): 
-        result[key] = qty * rates[key] 
+    for key, qty in usage.items(): # iterates over each key and it's assigned int value in the usage dict
+        result[key] = qty * rates[key] # each dict element stored in result = int value multiplied by the rates value
 
-    return result 
-
-def compute_final_bill(usage, rates):
-
-    subtotals = compute_subtotals(usage, rates)
-    
-
-    for key, qty in usage.items():
-        subtotals[key] = qty * rates[key] 
-
-    return subtotals
+    return result # returns the updated result dict so that it can be used in other functions
 
 def print_subtotals(usage, rates):
 
