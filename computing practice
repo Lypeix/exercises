@@ -22,7 +22,7 @@ def compute_subtotals(usage, rates):
 
 def print_subtotals(usage, rates):
 
-    subtotals = compute_final_bill(usage, rates)  
+    subtotals = compute_subtotals(usage, rates)  
 
     subtotal_sum = 0 # accumulator (stores value)
     total_sum = 0 # stores the value after tax
