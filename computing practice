@@ -46,7 +46,7 @@ def print_subtotals(usage, rates):
 
 
     print(f"subtotal_sum: {subtotal_sum}")
-    print(f"tax: {TAX_RATE}")
+    print(f"tax: {tax_amount}")
     print(f"total: {round(total, 2)}")
 
 
