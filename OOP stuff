@@ -12,14 +12,14 @@ class ActivityTracker:
     def add_activities(self, activities):
         self.activities.append(activities) # adds activity objects to the list
 
-    tracker = ActivityTracker() # Creates a list to store activity objects in
+    tracker = ActivityTracker() # Creates ActivityTracker object with empty activities list
 
 activity_1 = Activity("Gym", "03.07.2026", "Fitness")
 activity_2 = Activity("Parachute Jumping", "01.07.2026", "Entertainment")
 activity_3 = Activity("Dark Souls", "02.07.2026", "Relaxation")
 activity_4 = Activity("Shopping", "03.07.2026", "Entertainment")
 
-tracker.add_activities(activity_1) # adds activity_1 to the tracker variable
+tracker.add_activities(activity_1) # adds activity_1 to the tracker
 tracker.add_activities(activity_2)
 tracker.add_activities(activity_3)
 tracker.add_activities(activity_4)
