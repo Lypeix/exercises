@@ -1,0 +1,28 @@
+class Activity:
+    def __init__(self, name, date, type):
+        self.name = name
+        self.date = date
+        self.type = type
+
+
+class ActivityTracker:
+    def __init__(self):
+        self.activities = []
+
+    def add_activities(self, activities):
+        self.activities.append(activities)
+
+tracker = ActivityTracker()
+
+activity_1 = Activity("Gym", "03.07.2026", "Fitness")
+activity_2 = Activity("Parachute Jumping", "01.07.2026", "Entertainment")
+activity_3 = Activity("Dark Souls", "02.07.2026", "Relaxation")
+activity_4 = Activity("Shopping", "03.07.2026", "Entertainment")
+
+tracker.add_activities(activity_1)
+tracker.add_activities(activity_2)
+tracker.add_activities(activity_3)
+tracker.add_activities(activity_4)
+
+for activity in tracker.activities:
+    print(f"Name: {activity.name} -- Date: {activity.date} -- Type: {activity.type}")
