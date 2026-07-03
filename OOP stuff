@@ -19,10 +19,10 @@ activity_2 = Activity("Parachute Jumping", "01.07.2026", "Entertainment")
 activity_3 = Activity("Dark Souls", "02.07.2026", "Relaxation")
 activity_4 = Activity("Shopping", "03.07.2026", "Entertainment")
 
-tracker.add_activities(activity_1) # adds activity_1 to the tracker
+tracker.add_activities(activity_1) # adds activity_1 to the tracker's activities list
 tracker.add_activities(activity_2)
 tracker.add_activities(activity_3)
 tracker.add_activities(activity_4)
 
-for activity in tracker.activities: # iterates over each item in the tracker variable
+for activity in tracker.activities: # iterates over each object in the tracker's activities list
     print(f"Name: {activity.name} -- Date: {activity.date} -- Type: {activity.type}")
