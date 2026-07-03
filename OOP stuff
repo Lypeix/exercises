@@ -10,9 +10,9 @@ class ActivityTracker:
         self.activities = [] # creates a list to store variables in
 
     def add_activities(self, activities):
-        self.activities.append(activities) # adds variables to the list
+        self.activities.append(activities) # adds activity objects to the list
 
-    tracker = ActivityTracker() # Adds activity objects to the list
+    tracker = ActivityTracker() # Creates a list to store activity objects in
 
 activity_1 = Activity("Gym", "03.07.2026", "Fitness")
 activity_2 = Activity("Parachute Jumping", "01.07.2026", "Entertainment")
