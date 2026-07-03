@@ -1,5 +1,5 @@
-class Activity: # Blueprint
-    def __init__(self, name, date, type): # defines initialization with first variable referring to the particular key
+class Activity: # Blueprint / architect
+    def __init__(self, name, date, type): # builder that runs automaticaly whenever new activity object is made, meanwhile first variable in the () is referring to the particular object that's currently being initialized
         self.name = name # equivalent of product['name'] = name
         self.date = date
         self.type = type
@@ -12,7 +12,7 @@ class ActivityTracker:
     def add_activities(self, activities):
         self.activities.append(activities) # adds variables to the list
 
-tracker = ActivityTracker() # Assigns add_activities function for a variable that will store the activities
+    tracker = ActivityTracker() # Adds activity objects to the list
 
 activity_1 = Activity("Gym", "03.07.2026", "Fitness")
 activity_2 = Activity("Parachute Jumping", "01.07.2026", "Entertainment")
