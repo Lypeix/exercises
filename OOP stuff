@@ -1,28 +1,87 @@
-class Activity: # Blueprint / architect
-    def __init__(self, name, date, type): # builder that runs automaticaly whenever new activity object is made, meanwhile first variable in the () is referring to the particular object that's currently being initialized
-        self.name = name # equivalent of product['name'] = name
+class Activity:
+    def __init__(self, name, energy, category, date):
+        self.name = name
+        self.energy = energy
+        self.category = category
         self.date = date
-        self.type = type
+        
 
 
 class ActivityTracker:
     def __init__(self):
-        self.activities = [] # creates a list to store variables in
+        self.activities = []
 
-    def add_activities(self, activities):
-        self.activities.append(activities) # adds activity objects to the list
+    def add_activity(self, activity):
+        self.activities.append(activity)
 
-    tracker = ActivityTracker() # Creates ActivityTracker object with empty activities list
+    def get_total_energy_spent(self):   
+        total_energy = 0
+        
+        for activity in self.activities:
+            total_energy += activity.energy
 
-activity_1 = Activity("Gym", "03.07.2026", "Fitness")
-activity_2 = Activity("Parachute Jumping", "01.07.2026", "Entertainment")
-activity_3 = Activity("Dark Souls", "02.07.2026", "Relaxation")
-activity_4 = Activity("Shopping", "03.07.2026", "Entertainment")
+        return total_energy
 
-tracker.add_activities(activity_1) # adds activity_1 to the tracker's activities list
-tracker.add_activities(activity_2)
-tracker.add_activities(activity_3)
-tracker.add_activities(activity_4)
+def user_choice(prompt, valid_choices):
+    while True:
+        choice = input(prompt)
+        if choice in valid_choices:
+            return choice
+        else:
+            print(f"Invalid choice! Choose from {', '.join(valid_choices)}")
 
-for activity in tracker.activities: # iterates over each object in the tracker's activities list
-    print(f"Name: {activity.name} -- Date: {activity.date} -- Type: {activity.type}")
+def get_integer(prompt):
+    while True:
+        try:
+            value = int(input(prompt))
+
+            if value <= 0:
+                print("The value must be greater than 0!")       
+            else:
+                return value
+        
+        except ValueError:
+            print("Invalid number!")
+ 
+def create_activity():
+    name = input("Name: ")
+    energy = get_integer("Energy: ")
+    category = input("Category: ")
+    date = input("Date: ")
+
+    return Activity(name, energy, category, date)
+
+def initialize():
+    tracker = ActivityTracker()
+    
+    while True:
+
+        answer =  user_choice("What would you like to do?"
+                            "\n1. Add a new activity"
+                            "\n2. View current activities"
+                            "\n3. View total energy required"
+                            "\n4. Exit"            
+                            "\n> ",
+                            ["1", "2", "3", "4"]       
+                            )
+        
+        if answer == "1":
+            activity = create_activity()
+            tracker.add_activity(activity)
+
+        elif answer == "2":
+            if len(tracker.activities) == 0:
+                print("You have no activities")
+            else:
+                for activity in tracker.activities:
+                    print(f"Name: {activity.name} -- Energy Required: {activity.energy} -- Category: {activity.category} -- Date: {activity.date}")
+
+        elif answer == "3":
+            print(f"Total energy: {tracker.get_total_energy_spent()}")
+
+        elif answer == "4":
+            break
+
+
+
+initialize()
