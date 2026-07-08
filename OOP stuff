@@ -1,5 +1,5 @@
-class Activity:
-    def __init__(self, name, energy, category, date):
+class Activity: # blueprint
+    def __init__(self, name, energy, category, date): # constructor, first paremeter means "initialize this particular object", runs whenever a new object is created
         self.name = name
         self.energy = energy
         self.category = category
@@ -9,16 +9,16 @@ class Activity:
 
 class ActivityTracker:
     def __init__(self):
-        self.activities = []
+        self.activities = [] # creats empety list to store values in
 
     def add_activity(self, activity):
-        self.activities.append(activity)
+        self.activities.append(activity) # adds object to the list
 
     def get_total_energy_spent(self):   
-        total_energy = 0
+        total_energy = 0 # accumulator
         
-        for activity in self.activities:
-            total_energy += activity.energy
+        for activity in self.activities: # for each object in the list 
+            total_energy += activity.energy # add it's energy value to the accumulator
 
         return total_energy
 
@@ -30,7 +30,7 @@ def user_choice(prompt, valid_choices):
         else:
             print(f"Invalid choice! Choose from {', '.join(valid_choices)}")
 
-def get_integer(prompt):
+def get_integer(prompt): # function's purpose to make sure user always puts an integer value in the question about energy so that total_energy can be calculated correctly
     while True:
         try:
             value = int(input(prompt))
@@ -49,10 +49,10 @@ def create_activity():
     category = input("Category: ")
     date = input("Date: ")
 
-    return Activity(name, energy, category, date)
+    return Activity(name, energy, category, date) # return expense data to the rest of the program using Activity blueprint (class)
 
 def initialize():
-    tracker = ActivityTracker()
+    tracker = ActivityTracker() # creates an object with empty list and allows easier usage of the functions that are inside ActivityTracker
     
     while True:
 
@@ -67,10 +67,10 @@ def initialize():
         
         if answer == "1":
             activity = create_activity()
-            tracker.add_activity(activity)
+            tracker.add_activity(activity) # since tracker is the ActivityTracker class, it can call the add_activity function this way and thus add the object inside it's tuple to the list
 
         elif answer == "2":
-            if len(tracker.activities) == 0:
+            if len(tracker.activities) == 0: # if the list doesnt have any characters, it's length is zero, so if there arent characters, it wont run
                 print("You have no activities")
             else:
                 for activity in tracker.activities:
@@ -85,3 +85,4 @@ def initialize():
 
 
 initialize()
+
