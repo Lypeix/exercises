@@ -24,7 +24,7 @@ class ActivityTracker:
 
 def user_choice(prompt, valid_choices):
     while True:
-        choice = input(prompt)
+        choice = input(prompt).strip().lower()
         if choice in valid_choices:
             return choice
         else:
@@ -67,10 +67,10 @@ def initialize():
         
         if answer == "1":
             activity = create_activity()
-            tracker.add_activity(activity) # since tracker is the ActivityTracker class, it can call the add_activity function this way and thus add the object inside it's tuple to the list
+            tracker.add_activity(activity) # tracker is an ActivityTracker object, so it can use add_activity method
 
         elif answer == "2":
-            if len(tracker.activities) == 0: # if the list doesnt have any characters, it's length is zero, so if there arent characters, it wont run
+            if len(tracker.activities) == 0: # if the list has no objects, it's length is zero, so if there arent characters, it wont run
                 print("You have no activities")
             else:
                 for activity in tracker.activities:
