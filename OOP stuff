@@ -30,7 +30,7 @@ def user_choice(prompt, valid_choices):
         else:
             print(f"Invalid choice! Choose from {', '.join(valid_choices)}")
 
-def get_integer(prompt): # function's purpose to make sure user always puts an integer value in the question about energy so that total_energy can be calculated correctly
+def get_integer(prompt): # function's purpose is to make sure user always puts an integer value in the question about energy so that total_energy can be calculated correctly
     while True:
         try:
             value = int(input(prompt))
